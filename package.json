@@ -77,13 +77,13 @@
   "paths": {
     "css": [
       {
-        "src": "skatytucker/scss/default/",
-        "dest": "skatytucker/static/css/"
+        "src": "scss/style",
+        "dest": "static/css/"
       }
     ],
     "js": {
-      "src": "skatytucker/js/",
-      "dest": "skatytucker/static/js/"
+      "src": "js/",
+      "dest": "static/js/"
     }
   }
 }

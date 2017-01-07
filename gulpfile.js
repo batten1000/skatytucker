@@ -134,7 +134,7 @@ gulp.task('styleguide:applystyles', function() {
     .pipe(gulp.dest(paths.styleguide.dest));
 });
 
-// Copy fonts and images to docs/styleguide directory
+/* Copy fonts and images to docs/styleguide directory
 gulp.task('styleguide:static', function(){
 	gulp.src([paths.styleguide.static + 'css/fonts/**'])
 		.pipe(gulp.dest(paths.styleguide.dest + 'fonts'));
@@ -143,17 +143,12 @@ gulp.task('styleguide:static', function(){
 });
 
 gulp.task('styleguide', ['styleguide:static', 'styleguide:generate', 'styleguide:applystyles']);
+*/
+gulp.task('build', ['js', 'css']);
 
-gulp.task('build', ['js', 'css', 'styleguide']);
-
-gulp.task('default', ['enable-watch-mode', 'js', 'css', 'styleguide'], function () {
+gulp.task('default', ['enable-watch-mode', 'js', 'css'], function () {
 	// Start watching changes and update styleguide whenever changes are detected
   	// Styleguide automatically detects existing server instance
-	gulp.watch([
-		paths.styleguide.src + 'includes/*.scss',
-		paths.styleguide.src + '**/*.scss',
-		'!' + paths.styleguide.src + 'includes/_mixins.scss'
-	], ['styleguide']);
 	gulp.watch(paths.css.map(function (path) {
 		return path.src + '**/*.scss';
 	}), ['css']);
