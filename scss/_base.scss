@@ -4,8 +4,8 @@
 html {
 	font-size: 16px;
 	font-family: 'Gotham SSm A';
-	background: url('../images/linen.jpg') repeat fixed center;
-	color: white;
+	//background: url('../images/linen.jpg') repeat fixed center;
+	color: $gray-med;
 }
 
 body {
@@ -14,7 +14,9 @@ body {
 }
 
 a, a:visited, a:link, a:focus {
-	color: white;
+	color: $gray-med;
+	font-weight: bold;
+	text-decoration: underline;
 }
 
 ul, li {

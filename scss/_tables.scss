@@ -2,53 +2,66 @@
 table {
 	width: 100%;
 
-	th {
-
-	}
-	tr {
-		border: 10px solid transparent;
-		display: block;
-		&.date-row {
-			background: gray;
-			font-size: 1.25em;
-		}
-		&.title-row {
-			border-left: 0;
-			color: orange;
-			font-size: 1.5em;
-		}
-	}
 	td {
-		display: block;
-		display: inline-block;
 		vertical-align: top;
+	}
+
+	&.credits  {
+		tr {
+			border: 10px solid transparent;
+			display: block;
+			@media(min-width: 768px) {
+				border-right: none;
+			}
+		}
+		td {
+			display: inline-block;
+		}
+	}
+
+	.date-row {
+		//background: gray;
+		font-size: 1.25em;
+		font-weight: bold;
+	}
+	
+	.title-row {
+		border-left: 0;
+		color: orange;
+		font-size: 1.5em;
+		text-align: left;
 	}
 	
 	.show {
-		background: #887d7d;
 		margin: 1em 0;
 		td {
-			width: 45%;
-			padding: .5em;
+			width: 49%;
+			padding: .5em 0;
 		}
-
 		&:hover {
-			background-color: black;
+			background-color: $gray-med;
+			color: white;
 		}
-		@media(min-width: 600px) {
+		@media(min-width: 768px) {
 			margin: 0;
 			background: none;
 			td {
-				width: 30%;
-				padding: 1% 1% 1% 0;
+				width: 33%;
+				padding: 1% 0;
 			}
 		}
 	}
-
+	.show-director {
+		text-align: left;
+		@media(min-width: 768px) {
+			text-align: right;
+			padding-right: 0;
+		}
+	}
 	.show-locale {
 		text-align: right;
-		@media(min-width: 600px) {
-			text-align: left;
+		@media(min-width: 768px) {
+			text-align: center;
 		}
 	}
 
