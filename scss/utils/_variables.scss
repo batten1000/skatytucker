@@ -1,0 +1,71 @@
+$sans-serif: 'Trade Gothic W01', sans-serif;
+$serif: 'Linotype Didot W01', serif;
+$serif-alt: 'Linotype Didot W01 Headline', serif;
+$base-font-size: 13px;
+$base-line-height: 18px;
+
+// Colors
+$white-smoke: #ddd;
+$base-bg-color: #000;
+$base-font-color: #050505;
+$gray-dark: #222;
+$gray-med: #666;
+$gray-light: #999;
+$sale-color: #900;
+$error-color: #900;
+
+// Breakpoint Media Queries
+$breakpoints : (
+  sm : '(max-width: 767px)',
+  sm-only : '(min-width: 0px) and (max-width:767px)',
+  md : '(min-width: 768px)',
+  md-only : '(min-width: 768px) and (max-width:1199px)',
+  lg : '(min-width: 1200px)',
+  xlg : '(min-width: 1620px)',
+  wideAspect: '(min-aspect-ratio: 19/9)'
+);
+
+// Header
+$header-bg-color: #000;
+$site-header-bar-height-sm: 36px;
+$site-header-bar-height-md: 48px;
+$site-header-bar-height-lg: 84px;
+
+// Navigation
+$mobile-nav-width: 180px;
+
+// Footer
+$footer-height: 203px;
+$footer-compact-height: 30px;
+$footer-bg-color: #000;
+
+// Forms
+$form-border-color: $white-smoke;
+$form-border: 1px solid $form-border-color;
+
+// Buttons
+$btn-text-color: #fff;
+$btn-bg-color: #000 !default;
+$btn-disabled-color: #bbb !default;
+
+// jQuery UI Widgets
+$ui-dialog-bg: #fff;
+$ui-overlay-bg: rgba(0,0,0,.5);
+
+
+// Swatch Color Values
+$swatch-colors : (
+  black: #000,
+  grey: #777,
+  white: #fefefe,
+  brown: #543521,
+  beige: #e3d1ab,
+  green: #435a2e,
+  blue: #1e1c43,
+  purple: #591a61,
+  red: #780d27,
+  pink: #b55d90,
+  yellow: #e8dc62,
+  orange: #be5d3a
+);
+

@@ -1,0 +1,9 @@
+.page-wrapper {
+	padding: 20px;
+
+	@media(min-width: 768px) {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 20px 0;
+	}
+}

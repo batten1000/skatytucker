@@ -1,0 +1,98 @@
+// Helper Classes
+//
+// Styleguide utils.helpers
+
+
+// .clearfix
+//
+// Clears a floating element
+// This is a concrete class genereated by the Guff clear mixin
+//
+// Styleguide utils.helpers.clearfix
+.clearfix {
+  @include clear();
+}
+
+// .visually-hidden
+//
+// Hide only visually, but have it available for screenreaders: h5bp.com/v
+//
+// Styleguide utils.helpers.visuallyhidden
+
+.visually-hidden { 
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; 
+}
+
+// Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p
+.visually-hidden.focusable:active, 
+.visually-hidden.focusable:focus { 
+  clip: auto; 
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto; 
+}
+
+// Float Helpers
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+// Visibility
+.hide {
+  display: none !important; // Override any display rules applied by other classes
+}
+
+// Text alignment helpers
+.align-center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
+.weight-normal {
+	font-weight: normal;
+}
+
+// Status color helpers
+.error,
+.error-form {
+  color: $error-color;
+}
+
+// Debug
+.debug {
+  outline: 1px dotted red;
+}
+
+// Hide unnecessary js elements
+.js .js-enabled-hide {
+  display: none;
+}
+

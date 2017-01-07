@@ -105,51 +105,11 @@ gulp.task('test:unit', function () {
 		}));
 });
 
-// Generate Style Guide
-// Include README.md file as the Overview page
-// Generate style guide to docs/styleguide directory
-gulp.task('styleguide:generate', function() {
-  // Only generate documentation from style.scss, includes/**.scss, elements/**.scss, and pages/**.scss (except includes/_mixins.scss)
-  return gulp.src([
-  		paths.styleguide.src + '*.scss',
-  		paths.styleguide.src + '**/*.scss',
-  		'!' + paths.styleguide.src + '{_sg2,_sg2/*.scss,_sg2/**,_sg2/**/*.scss,_sg2/**/**/*.scss}',
-  		'!' + paths.styleguide.src + 'includes/_mixins.scss'
-  	])
-    .pipe(styleguide.generate({
-        title: 'Lucky Brand Styleguide',
-        server: true,
-        extraHead: '<style>body { font-family: "National","Helvetica","Arial",sans-serif; }</style>',
-        rootPath: paths.styleguide.dest,
-        overviewPath: 'luckybrand_v2_core/cartridge/scss/README.md'
-    }))
-    .pipe(gulp.dest(paths.styleguide.dest));
-});
-
-// Apply styles from Lucky Brand site to style guide
-gulp.task('styleguide:applystyles', function() {
-  return gulp.src(paths.styleguide.src + '*.scss')
-    .pipe(sass({ errLogToConsole: true }))
-    .pipe(styleguide.applyStyles())
-    .pipe(gulp.dest(paths.styleguide.dest));
-});
-
-/* Copy fonts and images to docs/styleguide directory
-gulp.task('styleguide:static', function(){
-	gulp.src([paths.styleguide.static + 'css/fonts/**'])
-		.pipe(gulp.dest(paths.styleguide.dest + 'fonts'));
-	gulp.src([paths.styleguide.static + 'images/**'])
-		.pipe(gulp.dest(paths.styleguide.dest + 'images'));
-});
-
-gulp.task('styleguide', ['styleguide:static', 'styleguide:generate', 'styleguide:applystyles']);
-*/
 gulp.task('build', ['js', 'css']);
 
-gulp.task('default', ['enable-watch-mode', 'js', 'css'], function () {
-	// Start watching changes and update styleguide whenever changes are detected
-  	// Styleguide automatically detects existing server instance
-	gulp.watch(paths.css.map(function (path) {
-		return path.src + '**/*.scss';
-	}), ['css']);
+//'js-plugins',
+gulp.task('watch', ['enable-watch-mode', 'js', 'css'], function () {
+  //gulp.watch(paths.sprites.src, ['sprites']);
+  gulp.watch('scss/*.scss', ['css']);
+  gulp.watch('js/*.js', ['js']);
 });

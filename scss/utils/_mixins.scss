@@ -1,0 +1,195 @@
+// Mixins
+
+// rem-calc($num)
+//
+// $num - px based value
+// 
+// Styelguide utils.mixins.rem-calc
+@function rem-calc($num) {
+  @return $num / $base-font-size * 1rem;
+}
+
+// font-size($size, $line-height)
+@mixin font-size($size, $line-height : false) {
+  @include typecsset-font-size($size, $line-height);
+}
+
+// vertical-rhythm ($scale)
+//
+// $scale - number representing scale multiplier of vertical rhythm
+//
+// This is a wrapper for the typecsset library which uses @extend to achieve 
+// vertical rhythm internally. I prefer to use a mixin to avoid issues when
+// using within media queries.
+// 
+// Styleguide utils.mixins.vertical-rhythm
+
+@mixin vertical-rhythm ($scale: .5) {
+  margin: 0;
+
+  @if($scale > 0){
+    margin-bottom: $typecsset-magic-number * $scale;
+    margin-bottom: $typecsset-magic-ratio * $scale + rem;
+  }
+}
+
+
+// breakpoint ($breakpoint)
+// 
+// $breakpoint - key name in $breakpoints map, default values are sm, md, md-only, and lg
+// 
+// Weight: -20
+// 
+// Styleguide utils.mixins.breakpoint
+// 
+
+@mixin breakpoint ($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+      @content;
+    }
+  }
+ 
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+// make-css-arrow($height, $width $color, $direction)
+// 
+// Creates an arrow icon using only CSS.
+//
+// $height - height in px, default is 6px
+// $width - width in px, default is 6px
+// $color - color in rgb(a), the fill color, default is #000
+// $direction - up, down, left, right, default is down
+//
+// Styleguide utils.mixins.cssArrow
+
+@mixin make-css-arrow ($height: 6px, $width: 6px, $color: #000, $direction: down) {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  @if $direction == down {
+    border: $width solid transparent;
+    border-top: $height solid $color;
+    border-bottom: 0;
+  } @else if $direction == up {
+    border: $width solid transparent;
+    border-bottom: $height solid $color;
+    border-top: 0;
+  } @else if $direction == left {
+    border: $height solid transparent;
+    border-right: $width solid $color;
+    border-left: 0;
+  } @else {
+    border: $height solid transparent;
+    border-left: $width solid $color;
+    border-right: 0;
+  }
+}
+
+// make-button ($text-color, $bg-color)
+//
+// - $text-color - color value
+// - $bg-color - background color value
+//
+// Generates a styled button
+//
+// Styleguide utils.mixins.button
+
+@mixin make-button ($text-color: $btn-text-color, $bg-color: $btn-bg-color) {
+  color: $btn-text-color;
+  border: none;
+  display: inline-block;
+  background: $btn-bg-color;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+  line-height: 1;
+  font-weight: bold;
+  padding: 1em 1.8em;
+  width: 100%;
+  border-radius: 0;
+  @include vertical-rhythm();
+
+  @include breakpoint(md) {
+    width: auto;
+    display: inline-block;
+  }
+}
+
+// prefix-placeholder
+//
+// Generates a prefix placeholder
+//
+// Styleguide utils.mixins.prefix-paceholder
+
+@mixin prefix-placeholder {
+  &::-webkit-input-placeholder {
+     @content;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+     @content;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+     @content;  
+  }
+
+  &:-ms-input-placeholder {  
+     @content;  
+  }
+}
+
+
+// make-content-helpers
+//
+// Generates content helper classes with a given prefix
+@mixin make-content-helpers($prefix) {
+  .#{$prefix}-hide {
+    display: none;
+  }
+  .#{$prefix}-align-center {
+    text-align: center;
+  }
+  .#{$prefix}-align-left {
+    text-align: left;
+  }
+  .#{$prefix}-align-right {
+    text-align: right;
+  }
+}
+
+// column-container
+// 
+// setups a container for column elements
+// this approach uses inline-block to create evenly spaced columns which may contain variable heights
+// the height of the row will automatically adjust to the tallest column
+@mixin column-container($maxwidth: 1320px) {
+  font-size: 0;
+  letter-spacing: 0;
+  word-spacing: 0;
+  max-width: $maxwidth;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// column
+//
+// used in conjuction with @column-container to create child column elements
+@mixin column($width: 25%, $padding: 10px, $margin: 0 0 20px 0, $fontsize: 12px) {
+  @include font-size($fontsize);
+  width: $width;
+  padding: $padding;
+  margin: $margin;
+  display: inline-block;
+  vertical-align: top;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
