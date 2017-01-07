@@ -8,25 +8,48 @@ table {
 	tr {
 		border: 10px solid transparent;
 		display: block;
-		border-left: 0;
-		border-right: 0;
 		&.date-row {
 			background: gray;
+			font-size: 1.25em;
 		}
 		&.title-row {
 			border-left: 0;
 			color: orange;
-		}
-		&:hover {
-			background-color: black;
+			font-size: 1.5em;
 		}
 	}
 	td {
 		display: block;
-		width: 30%;
 		display: inline-block;
 		vertical-align: top;
-		padding: 16px;
+	}
+	
+	.show {
+		background: #887d7d;
+		margin: 1em 0;
+		td {
+			width: 45%;
+			padding: .5em;
+		}
+
+		&:hover {
+			background-color: black;
+		}
+		@media(min-width: 600px) {
+			margin: 0;
+			background: none;
+			td {
+				width: 30%;
+				padding: 1% 1% 1% 0;
+			}
+		}
+	}
+
+	.show-locale {
+		text-align: right;
+		@media(min-width: 600px) {
+			text-align: left;
+		}
 	}
 
 }
